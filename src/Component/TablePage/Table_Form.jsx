@@ -4,9 +4,11 @@ class PersonForms extends Component {
     constructor() {
         super()
         this.state = {
-            productName: ''
-            
+            productName: '',
+            today: ''
         }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleChange = (e) => {
         // console.log(e.target.value)
@@ -22,26 +24,26 @@ class PersonForms extends Component {
         this.resetForm();
 
     }
-    
+
     resetForm() {
         this.setState({
             personName: ''
         })
     }
-    
+
     render() {
         return (
-            <div className="ui container-fluid" style={{background: "#b6aaaa", padding: 20 ,marginBottom: 15}}>
-                <h3 style={{color: "#e6fcfc"}}> Person Details </h3><br />
+            <div className="ui container-fluid" style={{ background: "#b6aaaa", padding: 20, marginBottom: 15 }}>
+                <h3 style={{ color: "#e6fcfc" }}> Person Details </h3><br />
                 <form className="ui form" onSubmit={this.handleSubmit} >
                     <div className="field">
-                        <label style={{color: "black"}}>Person Name :&nbsp;</label>
+                        <label style={{ color: "black" }}>Person Name :&nbsp;</label>
                         <input type="text" name="personName" placeholder="Person Name"
                             onChange={this.handleChange}
-                            value={this.state.personName} style={{borderRadius: 10, padding: 5, background: "#fcf7f7"}} />
+                            value={this.state.personName} style={{ borderRadius: 10, padding: 5, background: "#fcf7f7" }} />
                     </div><br />
-                    
-                    <button className="btn btn-success" type="submit" style={{borderRadius: 10}}>Submit</button>
+
+                    <button className="btn btn-success" type="submit" style={{ borderRadius: 10 }}>Submit</button>
                 </form>
             </div>
         )
