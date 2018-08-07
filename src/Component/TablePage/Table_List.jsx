@@ -6,10 +6,11 @@ class PersonList extends Component {
         super();
 
         this.state = {
-            "Persons": [],
+            "Persons": [{}],
             latestId: 1
         }
-        this.handleRemoveRow = this.handleRemoveRow.bind(this);
+        // this.handleRemoveRow = this.handleRemoveRow.bind(this);
+        this.handleRemoveSpecificRow = this.handleRemoveSpecificRow.bind(this);
     }
 
     getPerson = (newperson) => {
@@ -22,12 +23,11 @@ class PersonList extends Component {
         })
 
     }
-
-    handleRemoveRow = () => {
-        this.setState({
-            Persons: this.state.Persons.slice(0, -1)
-        });
-    };
+    handleRemoveSpecificRow = (data) => () => {
+    const index = this.state.Persons.indexOf(data);
+    this.state.Persons.splice(index, 1);
+    this.setState(this.state.Persons);
+  };
 
 
     componentDidUpdate() {
@@ -67,7 +67,7 @@ class PersonList extends Component {
 
 
                                     <button className="btn btn-danger"
-                                        onClick={() => this.handleRemoveRow(data)}
+                                        onClick={this.handleRemoveSpecificRow(data)}
                                     >Remove</button>
                                 </td>
 
